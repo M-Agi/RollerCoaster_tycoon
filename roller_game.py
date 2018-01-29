@@ -1,6 +1,12 @@
 #!/usr/bin/python
 
 class Park(object):
+    """An amusement park with different buildings.
+
+    Attributes:
+        buildings: A list that contain the buildings of the amusement park.
+        money: The budget of the amusement park.
+    """
 
     def __init__(self):
         self.buildings = []
