@@ -1,86 +1,40 @@
 #!/usr/bin/python
 
-class Park(object):
-    """An amusement park with different buildings.
+import menus
+import simulation
 
-    Variables:
-        buildings: A list that contain the buildings of the amusement park.
-        money: The budget of the amusement park.
-    """
+menus.menu()
 
-    def __init__(self):
-        """Return a aprk object which has empty building list and have 150000 budget money."""
-        self.buildings = []
-        self.money = 150000
+input_build_building = "1"
+input_upgrade_building = "2"
+input_buy_advertisement = "3"
+input_employ = "4"
+input_end_turn = "5"
+input_exit = "9"
 
-    def build(self, b):
-        """Check whether your park has enough money to build *b* building.
-        Then return the building list with the newly added building and subtracts the cost of the building.
-        :param b: is the type of the building
-        """
-        if self.money >= b.cost:
-            self.money -= b.cost
-            self.buildings.append(b)
+selectable_items = [input_build_building, input_upgrade_building, input_buy_advertisement, input_employ, input_end_turn, input_exit]
+modes = ["easy", "normal", "hard"]
 
-    def buy_advertisement(self, d):
-        pass
-
-    def turn(self):
-        """After each turn you produce money after your buildings.
-        """
-        for b in self.buildings:
-            b.produce_income()
+my_park = simulation.Park()
+while True:
+    selected_menu = ""
+    while selected_menu not in selectable_items:
+        selected_menu = raw_input("Select an item from the menu")
+    if selected_menu == input_build_building:
+        menus.building_menu(my_park)
 
 
-class Building(object):
-    """Building that can be bought for the amusement park.
-
-    Variables:
-        name: it the name of the building
-        cost: the cost of the building
-        income:
-        base_income:
-        real_income:
-        upgrade_cost: the cost of upgrading the building, the cost of the upgrading is doubles each time (the first is equal to the cost of the building)
-        level: the level of the building
-
-    """
-
-    def __init__(self, name, cost, income):
-        self.name = name
-        self.cost = cost
-        self.income = income
-        self.base_income = income
-        self.real_income = income
-        self.upgrade_cost = cost
-        self.level = 0
-
-    def produce_income(self):
-        park.money += self.real_income
-
-    def upgrade(self, park):
-        if park.money >= self.upgrade_cost:
-            park.money -= self.upgrade_cost
-            self.real_income += self.base_income
-            self.upgrade_cost *= 2
-            self.level += 1
+    elif selected_menu == input_upgrade_building:
+        if len(my_park.buildings) != 0:
+            menus.upgrade_menu()
+        else:
+            selected_menu = raw_input("You have no buildings to upgrade")
+    elif selected_menu == input_buy_advertisement:
+        pass #TODO
+    elif selected_menu == input_employ:
+        pass #TODO
+    elif selected_menu == input_exit:
+        break
 
 
-def menu():
-    separator_line = "-" * 50
-    print "1. Build an item"
-    print "2. Upgrade an item"
-    print "3. Buy advertisement"
-    print "4. Employ a specialist"
-    print "5. End turn"
-    print "9. Quit"
-    print separator_line
-    return 0
-menu()
-chosable_items = ["1", "2", "3", "4", "5", "9"]
-
-
-park = Park()
-park.build(Building("Korhinta", 100, 20))
-park.turn()
-
+my_park.turn()
