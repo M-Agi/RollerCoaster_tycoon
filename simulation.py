@@ -1,3 +1,11 @@
+class BuildingType(object):
+    """"Building types, that can be build in the game."""
+
+    def __init__(self, name, cost, income):
+        self.name = name
+        self.cost = cost
+        self.income = income
+
 class Park(object):
     """An amusement park with different buildings.
 
@@ -7,33 +15,35 @@ class Park(object):
         building_types: These type of building exist in the game.
     """
     building_types = ["Cotton Candy Vendor", "Carousel", "Boating Lake", "Ghost Train", "Roller Coaster"]
-    """
+
     easy = [BuildingType(building_types[0], 50000, 10),
-            bt.BuildingType(Park.building_types[1], 100000, 20),
-            bt.BuildingType(Park.building_types[2], 200000, 40),
-            bt.BuildingType(Park.building_types[3], 400000, 80),
-            bt.BuildingType(Park.building_types[4], 800000, 160)
+            BuildingType(building_types[1], 100000, 20),
+            BuildingType(building_types[2], 200000, 40),
+            BuildingType(building_types[3], 400000, 80),
+            BuildingType(building_types[4], 800000, 160)
             ]
 
-    normal = [bt.BuildingType(Park.building_types[0], 100000, 5),
-              bt.BuildingType(Park.building_types[1], 150000, 10),
-              bt.BuildingType(Park.building_types[2], 300000, 20),
-              bt.BuildingType(Park.building_types[3], 600000, 40),
-              bt.BuildingType(Park.building_types[4], 1000000, 80)
+    normal = [BuildingType(building_types[0], 100000, 5),
+              BuildingType(building_types[1], 150000, 10),
+              BuildingType(building_types[2], 300000, 20),
+              BuildingType(building_types[3], 600000, 40),
+              BuildingType(building_types[4], 1000000, 80)
               ]
 
-    hard = [bt.BuildingType(Park.building_types[0], 150000, 2),
-            bt.BuildingType(Park.building_types[1], 200000, 5),
-            bt.BuildingType(Park.building_types[2], 400000, 10),
-            bt.BuildingType(Park.building_types[3], 800000, 20),
-            bt.BuildingType(Park.building_types[4], 1600000, 40)
+    hard = [BuildingType(building_types[0], 150000, 2),
+            BuildingType(building_types[1], 200000, 5),
+            BuildingType(building_types[2], 400000, 10),
+            BuildingType(building_types[3], 800000, 20),
+            BuildingType(building_types[4], 1600000, 40)
             ]
-    """
+    modes = [ easy, normal, hard ]
+    mode_names = [ "easy", "normal", "hard" ]
 
-    def __init__(self):
+    def __init__(self, mode):
         """Return a park object which has empty building list and have 150000 budget money."""
         self.buildings = []
         self.money = 150000
+        self.mode = mode
 
     def build(self, b):
         """Check whether your park has enough money to build *b* building.
@@ -54,13 +64,7 @@ class Park(object):
             b.produce_income(self)
 
 
-class BuildingType(object):
-    """"Building types, that can be build in the game."""
 
-    def __init__(self, name, cost, income):
-        self.name = name
-        self.cost = cost
-        self.income = income
 
 
 class Building(object):

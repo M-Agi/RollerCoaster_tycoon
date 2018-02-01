@@ -1,3 +1,5 @@
+import simulation
+
 def menu():
     separator_line = "-" * 50
     print "1. Build an item"
@@ -9,10 +11,12 @@ def menu():
     print separator_line
 
 
-def building_menu(park):
+def building_menu(my_park):
     separator_line = "-" * 50
-    for item in park.building_types:
-        print item,
+    i = 1
+    for item in simulation.Park.modes[my_park.mode]:
+        print i, vars(item)
+        i += 1
     print separator_line
 
 
