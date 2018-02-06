@@ -1,5 +1,15 @@
 import simulation
 
+
+def mode_menu():
+    separator_line = "-" * 50
+    print "Choose gameplay mode"
+    print "1. Easy"
+    print "2. Normal"
+    print "3. Hard"
+    print "9. Quit"
+    print separator_line
+
 def menu():
     separator_line = "-" * 50
     print "1. Build an item"
@@ -7,7 +17,7 @@ def menu():
     print "3. Buy advertisement"
     print "4. Employ a specialist"
     print "5. End turn"
-    print "9. Quit"
+    print "9. Back"
     print separator_line
 
 

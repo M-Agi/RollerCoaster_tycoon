@@ -6,6 +6,7 @@ class BuildingType(object):
         self.cost = cost
         self.income = income
 
+
 class Park(object):
     """An amusement park with different buildings.
 
@@ -36,8 +37,8 @@ class Park(object):
             BuildingType(building_types[3], 800000, 20),
             BuildingType(building_types[4], 1600000, 40)
             ]
-    modes = [ easy, normal, hard ]
-    mode_names = [ "easy", "normal", "hard" ]
+    modes = [easy, normal, hard]
+    mode_names = ["easy", "normal", "hard"]
 
     def __init__(self, mode):
         """Return a park object which has empty building list and have 150000 budget money."""
@@ -62,9 +63,6 @@ class Park(object):
         """
         for b in self.buildings:
             b.produce_income(self)
-
-
-
 
 
 class Building(object):
