@@ -10,14 +10,12 @@ def mode_menu():
     print "9. Quit"
     print separator_line
 
+
 def menu():
     separator_line = "-" * 50
-    print "1. Build an item"
-    print "2. Upgrade an item"
-    print "3. Buy advertisement"
-    print "4. Employ a specialist"
-    print "5. End turn"
-    print "9. Back"
+    screen_options = ["Build an item", "Upgrade an item", "Buy advertisement", "Employ a specialist", "End turn", "Back"]
+    for i in xrange(0, len(screen_options)):
+        print i + 1, "-", screen_options[i]
     print separator_line
 
 
