@@ -25,6 +25,7 @@ def building_menu(my_park):
     for item in simulation.Park.modes[my_park.mode]:
         print i, vars(item)
         i += 1
+    print "6 - Back"
     print separator_line
 
 

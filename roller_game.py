@@ -58,8 +58,12 @@ while game_is_active:
                 ui_screen = screen_mode
 
     elif ui_screen == screen_build:
-        pass
-      #  menus.building_menu(my_park)
+        menus.building_menu(my_park)
+        selected_building = raw_input("Select a building for the list")
+        if selected_building == "1":
+            my_park.build(simulation.Park.modes[my_park.mode][0])
+        elif selected_building == "6":
+            ui_screen = screen_action
     elif ui_screen == screen_upgrade:
         if len(my_park.buildings) != 0:
             menus.upgrade_menu()
