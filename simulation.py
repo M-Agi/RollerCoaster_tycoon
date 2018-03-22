@@ -6,6 +6,8 @@ class BuildingType(object):
         self.cost = cost
         self.income = income
 
+    def __str__(self):
+        return self.name
 
 class Park(object):
     """An amusement park with different buildings.
@@ -46,14 +48,14 @@ class Park(object):
         self.money = 150000
         self.mode = mode
 
-    def build(self, b):
+    def build(self, btype):
         """Check whether your park has enough money to build *b* building.
         Then return the building list with the newly added building and subtracts the cost of the building.
         :param b: is the type of the building
         """
-        if self.money >= b.cost:
-            self.money -= b.cost
-            self.buildings.append(b)
+        if self.money >= btype.cost:
+            self.money -= btype.cost
+            self.buildings.append(Building(btype))
 
     def buy_advertisement(self, d):
         pass
@@ -78,17 +80,21 @@ class Building(object):
 
     """
 
-    def __init__(self, type):
-        self.real_income = type.income
-        self.upgrade_cost = type.cost
+    def __init__(self, btype):
+        self.type = btype
+        self.real_income = btype.income
+        self.upgrade_cost = btype.cost
         self.level = 0
+
+    def __str__(self):
+        return  "%s building level is %s, its income is %s and its cost is %s" % (self.type, self.level, self.real_income, self.upgrade_cost)
 
     def produce_income(self, park):
         park.money += self.real_income
 
-    def upgrade(self, park, type):
+    def upgrade(self, park, btype):
         if park.money >= self.upgrade_cost:
             park.money -= self.upgrade_cost
-            self.real_income += type.income
+            self.real_income += btype.income
             self.upgrade_cost *= 2
             self.level += 1
