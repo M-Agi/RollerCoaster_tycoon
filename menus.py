@@ -1,4 +1,5 @@
 import simulation
+import os
 
 
 def mode_menu():
@@ -18,6 +19,9 @@ def menu():
         print i + 1, "-", screen_options[i]
     print separator_line
 
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def building_menu(my_park):
     separator_line = "-" * 50

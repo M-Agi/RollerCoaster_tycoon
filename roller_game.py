@@ -42,6 +42,7 @@ while game_is_active:
                 ui_screen = screen_action
     elif ui_screen == screen_action:
         while ui_screen == screen_action:
+            menus.clear_screen()
             menus.menu()
             selected_menu = raw_input("Select an item from the menu")
             if selected_menu == "1":
@@ -58,6 +59,7 @@ while game_is_active:
                 ui_screen = screen_mode
 
     elif ui_screen == screen_build:
+        menus.clear_screen()
         menus.building_menu(my_park)
         selected_building = int(raw_input("Select a building for the list"))
         if selected_building in range(1,6):
@@ -67,7 +69,7 @@ while game_is_active:
 
     elif ui_screen == screen_upgrade:
         if len(my_park.buildings) != 0:# and my_park.buildings[0].upgrade_cost <= my_park.money:
-
+            menus.clear_screen()
             menus.upgrade_menu(my_park)
 
             selected_menu = raw_input("Select a building to upgrade")

@@ -57,6 +57,11 @@ class Park(object):
             self.money -= btype.cost
             self.buildings.append(Building(btype))
 
+    def print_buildings(self):
+        my_building_list = self.buildings
+        for i in xrange(len(my_building_list)):
+            print vars(my_building_list[i])["name"], " "
+
     def buy_advertisement(self, d):
         pass
 
