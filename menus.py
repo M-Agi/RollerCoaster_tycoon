@@ -39,5 +39,7 @@ def upgrade_menu(my_park):
     for building in my_park.buildings:
         print i, building
         i += 1
+    back_button = len(my_park.buildings) + 1
+    print "%s - Back" % back_button
     print separator_line
 

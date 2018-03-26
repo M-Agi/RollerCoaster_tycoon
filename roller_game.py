@@ -27,6 +27,8 @@ screen_upgrade = 3
 screen_advertisement = 4
 screen_employ = 5
 
+screens = [screen_mode, screen_action, screen_build, screen_upgrade, screen_advertisement, screen_employ]
+
 ui_screen = screen_mode
 game_is_active = True
 
@@ -44,18 +46,12 @@ while game_is_active:
         while ui_screen == screen_action:
             menus.clear_screen()
             menus.menu()
-            selected_menu = raw_input("Select an item from the menu")
-            if selected_menu == "1":
-                ui_screen = screen_build
-            elif selected_menu == "2":
-                ui_screen = screen_upgrade
-            elif selected_menu == "3":
-                ui_screen = screen_advertisement
-            elif selected_menu == "4":
-                ui_screen = screen_employ
-            elif selected_menu == "5":
+            selected_menu = int(raw_input("Select an item from the menu"))
+            if selected_menu in range(1,6):
+                ui_screen = screens[selected_menu + 1]
+            elif selected_menu == 5:
                 my_park.turn()
-            elif selected_menu == "6":
+            elif selected_menu == 6:
                 ui_screen = screen_mode
 
     elif ui_screen == screen_build:
@@ -68,11 +64,18 @@ while game_is_active:
             ui_screen = screen_action
 
     elif ui_screen == screen_upgrade:
-        if len(my_park.buildings) != 0:# and my_park.buildings[0].upgrade_cost <= my_park.money:
+        if len(my_park.buildings) != 0:
             menus.clear_screen()
             menus.upgrade_menu(my_park)
-
-            selected_menu = raw_input("Select a building to upgrade")
+            selected_menu = int(raw_input("Select a building to upgrade"))
+            if selected_menu in range(1, len(my_park.buildings) + 1):
+                if my_park.buildings[selected_menu - 1].upgrade_cost <= my_park.money:
+                    my_park.buildings[selected_menu - 1].upgrade(my_park, my_park.buildings[selected_menu - 1].type)
+                else:
+                    print "You have not enough money to upgrade this building"
+                #    ui_screen = screen_upgrade
+            if selected_menu == len(my_park.buildings) + 1:
+                ui_screen = screen_action
         else:
             print "You have no buildings to upgrade"
             ui_screen = screen_action
