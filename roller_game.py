@@ -32,7 +32,9 @@ screens = [screen_mode, screen_action, screen_build, screen_upgrade, screen_adve
 ui_screen = screen_mode
 game_is_active = True
 
+
 while game_is_active:
+
     game_mode = ""
     if ui_screen == screen_mode:
         while game_mode not in ["1", "2", "3", "9"]:
@@ -42,6 +44,7 @@ while game_is_active:
                 game_is_active = False
             else:
                 ui_screen = screen_action
+
     elif ui_screen == screen_action:
         while ui_screen == screen_action:
             menus.clear_screen()
